@@ -1,16 +1,20 @@
 apply plugin: 'com.android.application'
 
 dependencies {
-    implementation project(':library')
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    // Or, fetch from Maven:
-//    implementation 'com.google.maps.android:android-maps-utils:0.5'
+    implementation 'com.google.maps.android:android-maps-utils:0.6.2'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
-
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.10.5'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.5'
+    implementation 'com.github.ronaldsmartin:Material-ViewPagerIndicator:1.0.4'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    implementation 'com.github.wseemann:FFmpegMediaMetadataRetriever:1.0.14'
+    implementation 'com.github.sualeh:pointlocation6709:4.1'
 }
 
 buildscript {
@@ -19,10 +23,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'com.android.tools.build:gradle:3.5.1'
     }
 }
 
@@ -37,8 +38,13 @@ allprojects {
 android {
     compileSdkVersion 28
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 28
     }
 
@@ -55,10 +61,4 @@ android {
             storeFile file('debug.keystore')
         }
     }
-}
-
-task startDemo(type: Exec) {
-    dependsOn 'installDebug'
-    def adb = new File("${System.env.ANDROID_HOME}", "platform-tools${File.separator}adb")
-    commandLine adb, "shell", "am", "start", "-n", "com.google.maps.android.utils.demo/.MainActivity"
 }

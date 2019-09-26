@@ -1,12 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/list">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/ToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/app_name"
+            app:logo="@drawable/toolbar_app_icon"
+            app:titleMarginStart="24dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/list"/>
+            android:hint="Start Date">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/StartDate"
+                android:clickable="true"
+                android:focusable="false"
+                android:longClickable="false"
+                android:inputType="date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="End Date">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/EndDate"
+                android:clickable="true"
+                android:focusable="false"
+                android:longClickable="false"
+                android:inputType="date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Selected Folders">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/SelectedFolders"
+                android:clickable="true"
+                android:focusable="false"
+                android:longClickable="false"
+                android:inputType="textNoSuggestions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="..."/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/LocationHistoryTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Optional Location History File"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/LocationHistory"
+                android:clickable="true"
+                android:focusable="false"
+                android:longClickable="false"
+                android:inputType="textUri"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/LocationHistoryLabel"
+            android:clickable="false"
+            android:focusable="false"
+            android:inputType="none"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autoLink="web"
+            android:text="Download and unzip &quot;Location history JSON format&quot; from https://takeout.google.com/settings/takeout"/>
+
+        <Button
+            android:id="@+id/ViewButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="View"/>
+    </LinearLayout>
 
 </ScrollView>

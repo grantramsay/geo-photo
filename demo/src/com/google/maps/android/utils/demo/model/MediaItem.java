@@ -19,15 +19,19 @@ package com.google.maps.android.utils.demo.model;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.clustering.ClusterItem;
 
-public class Person implements ClusterItem {
-    public final String name;
-    public final int profilePhoto;
-    private final LatLng mPosition;
+public class MediaItem implements ClusterItem {
+    public final String mediaPath;
+    public final LatLng mPosition;
+    public final long mId;
+    public final long date;
+    public final int type;
 
-    public Person(LatLng position, String name, int pictureResource) {
-        this.name = name;
-        profilePhoto = pictureResource;
+    public MediaItem(LatLng position, String mediaPath, long id, long date, int type) {
+        this.mediaPath = mediaPath;
         mPosition = position;
+        mId = id;
+        this.date = date;
+        this.type = type;
     }
 
     @Override
